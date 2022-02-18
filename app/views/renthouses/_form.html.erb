@@ -1,0 +1,33 @@
+<%= form_with(model: @renthouse, local: true) do |f| %>
+
+  <%= f.label "物件名" %>
+  <br>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label "賃料" %>
+  <br>
+  <%= f.text_field :rent %>
+  <span>円</span>
+  <br>
+
+  <%= f.label "住所" %>
+  <br>
+  <%= f.text_field :address %>
+  <br>
+
+  <%= f.label "築年数" %>
+  <br>
+  <%= f.text_field :age %>
+  <span>年</span>
+  <br>
+
+  <%= f.label "備考" %>
+  <br>
+  <%= f.text_area :remarks %>
+  <br>
+
+  <hr>
+
+  <%= f.submit "登録する" %>
+<% end %>
+
