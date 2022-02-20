@@ -7,20 +7,23 @@ class RenthousesController < ApplicationController
 
   def new
     @renthouse = Renthouse.new
+    @renthouse.stations.build
   end
 
   def create
-    Renthouse.create(name: params[:renthouse][:name], rent: params[:renthouse][:rent],
-     address: params[:renthouse][:address], age: params[:renthouse][:age], 
-     remarks: params[:renthouse][:remarks])
-
-     redirect_to renthouses_path, notice: "登録しました"
+    @renthouse = Renthouse.new(renthouse_params)
+    if @renthouse.save
+      redirect_to renthouses_path, notice: "登録しました"
+    else
+      redirect_to new_renthouse_path
+    end
   end
 
   def show
   end
 
   def edit
+    @renthouse.stations.build
   end
   
   def update
@@ -43,7 +46,7 @@ class RenthousesController < ApplicationController
   end
 
   def renthouse_params
-    params.require(:renthouse).permit(:name, :rent, :address, :age, :remarks)
+    params.require(:renthouse).permit(:name, :rent, :address, :age, :remarks, stations_attributes: [:id, :route, :stationname, :time, :_destroy])
   end
 
 end

@@ -8,6 +8,28 @@
 
 <hr>
 
+<% i = 1 %>
+<% x = @renthouse.stations.length %>
+
+<% @renthouse.stations.each do |f| %>
+  <table>
+    <th>最寄り駅<%= i %></th>
+    <tr>
+      <td>路線名　</td>
+      <td><%= f.route %></td>
+    </tr>
+    <tr>
+      <td>駅名　</td>
+      <td><%= f.stationname %></td>
+    </tr>
+    <tr>
+      <td>徒歩分数</td>
+      <td><%= f.time %>分</td>
+    </tr>
+  </table>
+  <% i += 1 %>
+<% end %>
+
 <%= link_to '編集', edit_renthouse_path(@renthouse.id) %>
 <span> | </span>
 <%= link_to '戻る', renthouses_path %>
