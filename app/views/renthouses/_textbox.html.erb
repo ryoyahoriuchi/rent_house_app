@@ -1,0 +1,11 @@
+<%= f.fields_for :stations do |g| %>
+  <p><strong>最寄り駅<%= i %></strong></p>
+  <%= g.label :route, "路線名" %><br>
+  <%= g.text_field :route %><br>
+
+  <%= g.label :stationname, "駅名" %><br>
+  <%= g.text_field :stationname %><br>
+
+  <%= g.label :time, "徒歩分数" %><br>
+  <%= g.text_field :time %><br>
+<% end %>
